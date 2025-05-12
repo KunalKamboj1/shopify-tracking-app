@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hmac = urlParams.get('hmac');
     
     try {
-      const response = await fetch(`/api/track-order?shop=${encodeURIComponent(shop)}&hmac=${hmac}`, {
+      const response = await fetch(`/apps/tracking/track-order?shop=${encodeURIComponent(shop)}&hmac=${hmac}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

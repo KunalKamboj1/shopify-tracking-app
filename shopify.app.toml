@@ -3,7 +3,7 @@
 client_id = "9480455e159a7269b9a774cf5e7186cd"
 name = "tracking-app-v2"
 handle = "tracking-app-v2"
-application_url = "https://safari-tech-nursing-southeast.trycloudflare.com"
+application_url = "https://shopify-tracking-app.vercel.app"
 embedded = true
 
 [build]
@@ -27,10 +27,15 @@ scopes = "read_fulfillments,read_orders,write_fulfillments,write_orders,write_pr
 
 [auth]
 redirect_urls = [
-  "https://safari-tech-nursing-southeast.trycloudflare.com/auth/callback",
-  "https://safari-tech-nursing-southeast.trycloudflare.com/auth/shopify/callback",
-  "https://safari-tech-nursing-southeast.trycloudflare.com/api/auth/callback"
+  "https://shopify-tracking-app.vercel.app/auth/callback",
+  "https://shopify-tracking-app.vercel.app/auth/shopify/callback",
+  "https://shopify-tracking-app.vercel.app/api/auth/callback"
 ]
 
 [pos]
 embedded = false
+
+[app_proxy]
+url = "https://shopify-tracking-app.vercel.app"
+subpath = "api"
+prefix = "tracking"
