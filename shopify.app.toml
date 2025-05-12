@@ -38,4 +38,4 @@ embedded = false
 [app_proxy]
 url = "https://shopify-tracking-app.vercel.app"
 subpath = "api"
-prefix = "tracking"
+prefix = "apps"

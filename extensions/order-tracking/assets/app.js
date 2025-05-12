@@ -21,12 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const hmac = urlParams.get('hmac');
     
     try {
-      const response = await fetch(`/apps/tracking/track-order?shop=${encodeURIComponent(shop)}&hmac=${hmac}`, {
+      // Use relative path for app proxy
+      const response = await fetch(`/apps/track-order?shop=${encodeURIComponent(shop)}&hmac=${hmac}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify({ orderNumber, email }),
+        credentials: 'include'
       });
 
       const data = await response.json();

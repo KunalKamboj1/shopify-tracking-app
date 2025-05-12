@@ -21,12 +21,35 @@ export const action = async ({ request }) => {
     const hmac = url.searchParams.get("hmac");
 
     console.log('Received request for shop:', shop);
+    console.log('HMAC:', hmac);
+
+    // Add CORS headers - allow requests from any Shopify store
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Accept',
+      'Access-Control-Allow-Credentials': 'true',
+    };
+
+    // Handle preflight requests
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 204,
+        headers: corsHeaders
+      });
+    }
 
     if (!shop || !hmac) {
       console.error('Missing shop or hmac:', { shop, hmac });
       return new Response(
         JSON.stringify({ message: "Missing shop or hmac in query." }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
+        { 
+          status: 400, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders
+          } 
+        }
       );
     }
 
@@ -35,7 +58,13 @@ export const action = async ({ request }) => {
       console.error('Invalid HMAC for shop:', shop);
       return new Response(
         JSON.stringify({ message: "Invalid HMAC." }),
-        { status: 403, headers: { "Content-Type": "application/json" } }
+        { 
+          status: 403, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders
+          } 
+        }
       );
     }
 
@@ -48,7 +77,13 @@ export const action = async ({ request }) => {
       console.error('No session found for shop:', shop);
       return new Response(
         JSON.stringify({ message: "Could not find a valid session for this shop. Please reinstall the app." }),
-        { status: 401, headers: { "Content-Type": "application/json" } }
+        { 
+          status: 401, 
+          headers: { 
+            "Content-Type": "application/json",
+            ...corsHeaders
+          } 
+        }
       );
     }
 
@@ -99,6 +134,7 @@ export const action = async ({ request }) => {
           status: 404,
           headers: {
             "Content-Type": "application/json",
+            ...corsHeaders
           },
         }
       );
@@ -116,6 +152,7 @@ export const action = async ({ request }) => {
           status: 200,
           headers: {
             "Content-Type": "application/json",
+            ...corsHeaders
           },
         }
       );
@@ -135,6 +172,7 @@ export const action = async ({ request }) => {
         status: 200,
         headers: {
           "Content-Type": "application/json",
+          ...corsHeaders
         },
       }
     );
@@ -149,6 +187,7 @@ export const action = async ({ request }) => {
         status: 500,
         headers: {
           "Content-Type": "application/json",
+          ...corsHeaders
         },
       }
     );
