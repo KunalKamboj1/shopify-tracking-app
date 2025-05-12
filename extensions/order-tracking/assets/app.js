@@ -15,14 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
     }
+
+    // Get the current URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const hmac = urlParams.get('hmac');
     
     try {
-      const response = await fetch('/apps/track-order', {
+      const response = await fetch(`/api/track-order?shop=${encodeURIComponent(shop)}&hmac=${hmac}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ orderNumber, email, shop }),
+        body: JSON.stringify({ orderNumber, email }),
       });
 
       const data = await response.json();
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayTrackingResult(data, false);
       }
     } catch (error) {
+      console.error('Error:', error);
       displayTrackingResult({ message: 'An error occurred. Please try again.' }, false);
     }
   });
