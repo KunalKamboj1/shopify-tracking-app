@@ -1,0 +1,13 @@
+{
+  "order_tracking": {
+    "heading": "Track Your Order",
+    "subheading": "Enter your order details to track your shipment",
+    "order_number_label": "Order Number",
+    "email_label": "Email Address",
+    "button_text": "Track Order",
+    "not_found": "Order not found. Please check your order number and email.",
+    "not_dispatched": "Your order has not been dispatched yet.",
+    "dispatched": "Your order has been dispatched!",
+    "error": "An error occurred while tracking your order. Please try again."
+  }
+} 

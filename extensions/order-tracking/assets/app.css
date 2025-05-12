@@ -1,0 +1,87 @@
+.order-tracking-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: var(--font-body-family);
+}
+
+.order-tracking-container h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.order-tracking-container p {
+  margin-bottom: 2rem;
+  color: var(--color-text-light);
+}
+
+.order-tracking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.form-group input {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.track-button {
+  background-color: var(--color-button);
+  color: var(--color-button-text);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.track-button:hover {
+  background-color: var(--color-button-hover);
+}
+
+.tracking-result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 4px;
+  background-color: var(--color-background-secondary);
+}
+
+.tracking-result.success {
+  border: 1px solid var(--color-success);
+}
+
+.tracking-result.error {
+  border: 1px solid var(--color-error);
+}
+
+.tracking-info {
+  margin-top: 1rem;
+}
+
+.tracking-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.tracking-link:hover {
+  text-decoration: underline;
+} 

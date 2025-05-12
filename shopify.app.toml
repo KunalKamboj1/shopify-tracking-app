@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "9480455e159a7269b9a774cf5e7186cd"
+name = "tracking-app-v2"
+handle = "tracking-app-v2"
+application_url = "https://safari-tech-nursing-southeast.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2025-04"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_fulfillments,read_orders,write_fulfillments,write_orders,write_products"
+
+[auth]
+redirect_urls = [
+  "https://safari-tech-nursing-southeast.trycloudflare.com/auth/callback",
+  "https://safari-tech-nursing-southeast.trycloudflare.com/auth/shopify/callback",
+  "https://safari-tech-nursing-southeast.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
