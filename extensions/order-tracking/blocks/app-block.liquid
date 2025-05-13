@@ -1,0 +1,63 @@
+{% schema %}
+{
+  "name": "Order Tracking",
+  "target": "section",
+  "stylesheet": "app.css",
+  "javascript": "app.js",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Track Your Order"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Enter your order details to track your shipment"
+    },
+    {
+      "type": "text",
+      "id": "order_number_label",
+      "label": "Order Number Label",
+      "default": "Order Number"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email Label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Track Order"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="order-tracking-container">
+  <h2>{{ block.settings.heading }}</h2>
+  <p>{{ block.settings.subheading }}</p>
+  
+  <form id="order-tracking-form" class="order-tracking-form">
+    <div class="form-group">
+      <label for="order-number">{{ block.settings.order_number_label }}</label>
+      <input type="text" id="order-number" name="orderNumber" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">{{ block.settings.email_label }}</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    
+    <button type="submit" class="track-button">{{ block.settings.button_text }}</button>
+  </form>
+  
+  <div id="tracking-result" class="tracking-result" style="display: none;">
+    <!-- Results will be populated here -->
+  </div>
+</div> 
