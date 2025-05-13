@@ -1,0 +1,2 @@
+[access_scopes]
+scopes = "read_fulfillments,read_orders,write_fulfillments,write_orders,write_products,write_billing" 
